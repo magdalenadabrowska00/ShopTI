@@ -24,6 +24,16 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ShopDbContext>(options => 
     options.UseSqlServer(builder.Configuration.GetConnectionString("ShopTI")));
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(builder =>
+    {
+        builder
+        .WithOrigins("https://localhost:7177", "http://localhost:5177")
+        .AllowAnyHeader()
+        .AllowAnyMethod();//.AllowAnyOrigin();
+    });
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -32,6 +42,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseCors(builder => {
+    builder
+    .AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader();
+    });
 
 app.UseHttpsRedirection();
 

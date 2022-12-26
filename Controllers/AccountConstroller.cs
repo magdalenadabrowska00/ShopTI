@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 using ShopTI.IServices;
 using ShopTI.Models;
 
@@ -6,6 +7,7 @@ namespace ShopTI.Controllers
 {
     [Route("api/account")]
     [ApiController]
+    [EnableCors]
     public class AccountConstroller : ControllerBase
     {
         private readonly IAccountService _accountService;
