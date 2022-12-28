@@ -18,7 +18,7 @@ namespace ShopTI.Controllers
         }
 
         [HttpPost("register")]
-        public ActionResult RegisterUser([FromBody] RegisterUser newUser)
+        public ActionResult RegisterUser([FromForm] RegisterUser newUser)
         {
             _accountService.RegisterUser(newUser);
             return Ok();
