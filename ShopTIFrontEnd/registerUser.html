@@ -1,0 +1,51 @@
+<form
+  id="registerForm"
+  method="post"
+  action="https://localhost:7177/api/account/register"
+  enctype="multipart/form-data"
+>
+  <div>Zarejestruj się</div>
+  <label for="firstName">Imię</label>
+  <input name="firstName" type="text" /> <br />
+  <br />
+
+  <label for="lastName">Nazwisko</label>
+  <input name="lastName" type="text" /> <br />
+  <br />
+
+  <label for="email">Adres email</label>
+  <input name="email" type="text" /> <br />
+  <br />
+
+  <label for="password">Hasło</label>
+  <input name="password" type="password" /> <br />
+  <br />
+
+  <label for="confirmPassword">Potwierdzenia hasła</label>
+  <input name="confirmPassword" type="password" /> <br />
+  <br />
+
+  <label for="country">Kraj pochodzenia</label>
+  <input name="country" type="text" /> <br />
+  <br />
+
+  <label for="city">Miasto</label>
+  <input name="city" type="text" /> <br />
+  <br />
+
+  <label for="street">Adres</label>
+  <input name="street" type="text" /> <br />
+  <br />
+
+  <label for="postalCode">Kod pocztowy</label>
+  <input name="postalCode" type="text" /> <br />
+  <br />
+
+  <label for="role">Rodzaj użytkownika</label> <br />
+  <label for="role">Użytkownik</label>
+  <input name="role" type="radio" value="Użytkownik" /> <br />
+  <label for="role">Admin</label>
+  <input name="role" type="radio" value="Admin" /> <br /><br />
+
+  <input type="submit" value="Sign in" />
+</form>
