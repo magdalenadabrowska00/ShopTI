@@ -23,5 +23,12 @@ namespace ShopTI.Controllers
             _accountService.RegisterUser(newUser);
             return Ok();
         }
+
+        [HttpPost("login")]
+        public ActionResult SignInUser([FromForm] Login data)
+        {
+            _accountService.SignInUser(data);
+            return Ok();
+        }
     }
 }

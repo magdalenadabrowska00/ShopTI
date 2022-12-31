@@ -2,12 +2,14 @@ using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 using ShopTI;
 using ShopTI.Entities;
 using ShopTI.IServices;
 using ShopTI.Models;
 using ShopTI.Models.Validators;
 using ShopTI.Services;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,6 +36,13 @@ builder.Services.AddCors(options =>
         .AllowAnyMethod();//.AllowAnyOrigin();
     });
 });
+
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Debug()
+    .WriteTo.File($"Logs/{Assembly.GetExecutingAssembly().GetName().Name}.log")
+    .CreateLogger();
+builder.Logging.ClearProviders();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

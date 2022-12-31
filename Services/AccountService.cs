@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Serilog;
 using ShopTI.Entities;
 using ShopTI.IServices;
 using ShopTI.Models;
@@ -35,6 +36,23 @@ namespace ShopTI.Services
             user.PasswordHash = hashedPassword;
             _dbContext.Users.Add(user);
             _dbContext.SaveChanges();
+
+            Log.Information("Zarejestrowano użytkownika o danych: {0} {1} o adresie email {2}", newUser.FirstName, newUser.LastName, newUser.Email);
+        }
+
+        public int SignInUser(Login userSignIn)
+        {
+            var userFromDb = _dbContext.Users.FirstOrDefault(x => x.Email == userSignIn.Email);
+            var verifyResult = _passwordHasher.VerifyHashedPassword(userFromDb, userFromDb.PasswordHash, userSignIn.Password);
+
+            if (verifyResult != PasswordVerificationResult.Success)
+            {
+                Log.Error("Nie udało się zalogować użytkownikowi o adresie email {0}.", userSignIn.Email);
+                throw new Exception("Niepoprawne hasło");              
+            }
+
+            Log.Information("Zalogowano użytkownika o adresie email {0}.", userSignIn.Email);
+            return userFromDb.UserId;
         }
     }
 }
