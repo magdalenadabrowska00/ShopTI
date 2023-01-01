@@ -43,6 +43,13 @@ namespace ShopTI.Services
         public int SignInUser(Login userSignIn)
         {
             var userFromDb = _dbContext.Users.FirstOrDefault(x => x.Email == userSignIn.Email);
+
+            if (userFromDb == null)
+            {
+                Log.Error("Nie udało się zalogować użytkownikowi o adresie email {0}.", userSignIn.Email);
+                throw new Exception("Taki użytkownik nie istnieje.");
+            }
+
             var verifyResult = _passwordHasher.VerifyHashedPassword(userFromDb, userFromDb.PasswordHash, userSignIn.Password);
 
             if (verifyResult != PasswordVerificationResult.Success)
