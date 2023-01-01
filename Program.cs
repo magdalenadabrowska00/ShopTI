@@ -39,7 +39,7 @@ builder.Services.AddCors(options =>
 
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Debug()
-    .WriteTo.File($"Logs/{Assembly.GetExecutingAssembly().GetName().Name}.log")
+    .WriteTo.File($"Logs/{Assembly.GetExecutingAssembly().GetName().Name}-{DateTime.Today.ToString("d")}.log")
     .CreateLogger();
 builder.Logging.ClearProviders();
 
