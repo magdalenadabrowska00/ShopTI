@@ -9,6 +9,7 @@ namespace ShopTI.Controllers
     [Route("api/product")]
     [ApiController]
     [EnableCors]
+    [Authorize]
     public class ProductController : ControllerBase
     {
         public readonly IProductService _productService;
@@ -18,6 +19,7 @@ namespace ShopTI.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult CreateProduct([FromForm] CreateProductModel newProduct)
         {
             var newProductId = _productService.CreateProduct(newProduct);

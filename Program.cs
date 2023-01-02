@@ -1,15 +1,21 @@
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Serilog;
 using ShopTI;
+using ShopTI.Authorization;
 using ShopTI.Entities;
 using ShopTI.IServices;
 using ShopTI.Models;
 using ShopTI.Models.Validators;
 using ShopTI.Services;
 using System.Reflection;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,11 +24,36 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+var authSettings = new AuthenticationSettings();
+builder.Configuration.GetSection("JwtSettings").Bind(authSettings);
+
+builder.Services.AddSingleton(authSettings);
+
+builder.Services.AddAuthentication(auth =>
+{
+    auth.DefaultAuthenticateScheme = "Bearer";
+    auth.DefaultScheme = "Bearer";
+    auth.DefaultChallengeScheme = "Bearer";
+}).AddJwtBearer(options =>
+{
+    options.RequireHttpsMetadata = false;
+    options.SaveToken = true;
+    options.TokenValidationParameters = new TokenValidationParameters
+   {
+       ValidAudience = authSettings.JwtIssuer,
+       ValidIssuer = authSettings.JwtIssuer,
+       IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(authSettings.JwtKey)),
+   };
+});
+
 builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
 builder.Services.AddScoped<IValidator<RegisterUser>, RegisterUserValidator>();
-//builder.Services.AddHttpContextAccessor();
+builder.Services.AddSingleton<IUserContextService, UserContextService>();
+builder.Services.AddScoped<IAuthorizationHandler, UserAuthorizationHandler>();
+builder.Services.AddHttpContextAccessor();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -53,15 +84,19 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseHttpsRedirection();
+
+app.UseRouting();
+
 app.UseCors(builder => {
     builder
     .AllowAnyOrigin()
     .AllowAnyMethod()
     .AllowAnyHeader();
-    });
+});
 
-app.UseHttpsRedirection();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
