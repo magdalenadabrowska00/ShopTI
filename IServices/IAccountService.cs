@@ -5,6 +5,6 @@ namespace ShopTI.IServices
     public interface IAccountService
     {
         void RegisterUser(RegisterUser newUser);
-        string SignInUser(Login userSignIn);
+        AuthenticatedResponse SignInUser(Login userSignIn);
     }
 }

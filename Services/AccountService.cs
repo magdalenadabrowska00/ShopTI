@@ -14,16 +14,16 @@ namespace ShopTI.Services
     {
         private readonly ShopDbContext _dbContext;
         private readonly IPasswordHasher<User> _passwordHasher;
-        private readonly AuthenticationSettings _authenticationSettings;
+        private readonly ITokenService _tokenService;
 
         public AccountService(
             ShopDbContext dbContext, 
-            IPasswordHasher<User> passwordHasher, 
-            AuthenticationSettings authenticationSettings)
+            IPasswordHasher<User> passwordHasher,
+            ITokenService tokenService)
         {
             _dbContext = dbContext;
             _passwordHasher = passwordHasher;
-            _authenticationSettings = authenticationSettings;
+            _tokenService = tokenService;
         }
 
         public void RegisterUser(RegisterUser newUser)
@@ -49,7 +49,7 @@ namespace ShopTI.Services
             Log.Information("Zarejestrowano użytkownika o danych: {0} {1} o adresie email {2}", newUser.FirstName, newUser.LastName, newUser.Email);
         }
 
-        public string SignInUser(Login userSignIn)
+        public AuthenticatedResponse SignInUser(Login userSignIn)
         {
             var userFromDb = _dbContext.Users.FirstOrDefault(x => x.Email == userSignIn.Email);
 
@@ -74,19 +74,14 @@ namespace ShopTI.Services
                 new Claim(ClaimTypes.Role, $"{userFromDb.Role}")
             };
 
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_authenticationSettings.JwtKey));
-            var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+            var accessToken = _tokenService.GenerateAccessToken(claims);
+            var refreshToken = _tokenService.GenerateRefreshToken();
 
-            var token = new JwtSecurityToken(
-                issuer: _authenticationSettings.JwtIssuer,
-                audience: _authenticationSettings.JwtIssuer,
-                claims: claims,
-                expires: DateTime.Now.AddDays(_authenticationSettings.JwtExpireDays),
-                signingCredentials: credentials);
+            userFromDb.RefreshToken = refreshToken;
+            _dbContext.SaveChanges();
 
-            string tokenAsString = new JwtSecurityTokenHandler().WriteToken(token);
             Log.Information("Zalogowano użytkownika o adresie email {0}.", userSignIn.Email);
-            return tokenAsString;
+            return new AuthenticatedResponse { Token = accessToken, RefreshToken = refreshToken };
         }
     }
 }
