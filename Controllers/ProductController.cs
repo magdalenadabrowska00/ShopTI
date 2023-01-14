@@ -18,9 +18,9 @@ namespace ShopTI.Controllers
             _productService = productService;
         }
 
-        [HttpPost]
+        [HttpPost("newProduct")]
         [Authorize(Roles = "Admin")]
-        public ActionResult CreateProduct([FromForm] CreateProductModel newProduct)
+        public ActionResult CreateProduct([FromBody] CreateProductModel newProduct)
         {
             var newProductId = _productService.CreateProduct(newProduct);
             return Created($"{newProductId}", null);

@@ -21,7 +21,7 @@ namespace ShopTI.Controllers
 
         [HttpPost("register")]
         [AllowAnonymous]
-        public ActionResult RegisterUser([FromForm] RegisterUser newUser)
+        public ActionResult RegisterUser([FromBody] RegisterUser newUser)
         {
             _accountService.RegisterUser(newUser);
             return Ok();
@@ -29,10 +29,10 @@ namespace ShopTI.Controllers
 
         [HttpPost("login")]
         [AllowAnonymous]
-        public ActionResult SignInUser([FromForm] Login data)
+        public ActionResult SignInUser([FromBody] Login data)
         {
-            var token = _accountService.SignInUser(data);
-            return Ok(token);
+            var response = _accountService.SignInUser(data);
+            return Ok(response);
         }
     }
 }
