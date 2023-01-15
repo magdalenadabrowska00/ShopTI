@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using ShopTI.Entities;
 using ShopTI.IServices;
 using ShopTI.Models;
 
@@ -9,7 +10,6 @@ namespace ShopTI.Controllers
     [Route("api/product")]
     [ApiController]
     [EnableCors]
-    [Authorize]
     public class ProductController : ControllerBase
     {
         public readonly IProductService _productService;
@@ -24,6 +24,12 @@ namespace ShopTI.Controllers
         {
             var newProductId = _productService.CreateProduct(newProduct);
             return Created($"{newProductId}", null);
+        }
+
+        [HttpGet("getProducts")]
+        public ActionResult<List<Product>> GetAllProducts()
+        {
+            return _productService.GetProducts();
         }
     }
 }

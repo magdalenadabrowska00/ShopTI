@@ -53,5 +53,10 @@ namespace ShopTI.Services
 
             return entity.ProductId;
         }
+
+        public List<Product> GetProducts()
+        {
+            return _dbcontext.Products.ToList();
+        }
     }
 }
