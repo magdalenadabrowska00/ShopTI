@@ -9,7 +9,7 @@ const Home = () => {
       >
         <Card>
           <Card.Body>
-            <Card.Title>Welcome! A demo on XD</Card.Title>
+            <Card.Title>Welcome on home page!</Card.Title>
           </Card.Body>
         </Card>
       </div>

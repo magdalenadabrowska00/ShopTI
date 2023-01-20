@@ -1,4 +1,6 @@
-﻿namespace ShopTI.Entities
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace ShopTI.Entities
 {
     public class Order
     {
@@ -8,5 +10,7 @@
         public string PaymentMethod { get; set; }
         public decimal TotalPrice { get; set; }
         public List<OrderDetail> OrderDetails { get; set; }
+        [NotMapped]
+        public string DeletedOrderItemIds { get; set; }
     }
 }

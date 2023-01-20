@@ -42,8 +42,8 @@ const Register = () => {
       "https://localhost:7177/api/account/register",
       userRegisterData
     );
-    console.log(apiResponse.data);
-    navigate("/login"); //nie działa przekierowanie, ale dane są w bazie
+    //console.log(apiResponse.data);
+    navigate("/login");
   };
 
   return (
@@ -107,9 +107,9 @@ const Register = () => {
                 value="User"
                 ref={role}
                 defaultChecked={true}
-                onClick={() => setChecked(!checked)}
+                onClick={() => setChecked(checked)}
               />
-              <Button variant="primary" type="submit" onClick={registerSubmit}>
+              <Button variant="primary" type="button" onClick={registerSubmit}>
                 Register
               </Button>
             </form>

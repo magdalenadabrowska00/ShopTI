@@ -9,6 +9,8 @@ namespace ShopTI
         public AutoMapperProfile()
         {
             CreateMap<Product, CreateProductModel>().ReverseMap(); //te same nazwy propertiesów powodują automatyczne zmapowanie
+            CreateMap<NewOrderModel, Order>().ReverseMap();
+            CreateMap<NewOrderModel, OrderDetail>().ReverseMap();
         }
     }
 }

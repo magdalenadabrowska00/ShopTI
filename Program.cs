@@ -50,6 +50,7 @@ builder.Services.AddAuthentication(auth =>
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
 builder.Services.AddScoped<IValidator<RegisterUser>, RegisterUserValidator>();
 builder.Services.AddSingleton<IUserContextService, UserContextService>();
@@ -65,7 +66,7 @@ builder.Services.AddCors(options =>
     options.AddDefaultPolicy(builder =>
     {
         builder
-        .WithOrigins("https://localhost:7177", "http://localhost:5177", "http://localhost:3000")
+        .WithOrigins("https://localhost:7177", "http://localhost:5177", "http://localhost:3000", "http://localhost:3001")
         .AllowAnyHeader()
         .AllowAnyMethod();//.AllowAnyOrigin();
     });

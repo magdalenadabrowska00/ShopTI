@@ -58,6 +58,16 @@ const Layout = ({ children }) => {
                 New product
               </Nav.Link>
             )}
+            {
+              <Nav.Link as={Link} to="/getProducts">
+                Products
+              </Nav.Link>
+            }
+            {user && hideRole && (
+              <Nav.Link as={Link} to="/addOrder">
+                New order
+              </Nav.Link>
+            )}
           </Nav>
           {user && (
             <Button
