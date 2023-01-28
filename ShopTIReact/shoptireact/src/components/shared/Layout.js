@@ -68,6 +68,11 @@ const Layout = ({ children }) => {
                 New order
               </Nav.Link>
             )}
+            {user && hideRole && (
+              <Nav.Link as={Link} to="/szczegolyZamowienia">
+                Szczegóły zamówienia
+              </Nav.Link>
+            )}
           </Nav>
           {user && (
             <Button

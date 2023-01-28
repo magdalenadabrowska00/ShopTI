@@ -8,6 +8,7 @@ import Register from "./pages/Register";
 import AddProduct from "./pages/AddProduct";
 import AllProducts from "./pages/AllProducts";
 import AddOrder from "./pages/AddOrder";
+import AddOrder1 from "./pages/AddOrder1";
 import { AuthContextProvider } from "./components/shared/AuthContext";
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
             <Route path="/addNewProduct" element={<AddProduct />}></Route>
             <Route path="/getProducts" element={<AllProducts />}></Route>
             <Route path="/addOrder" element={<AddOrder />}></Route>
+            <Route path="/szczegolyZamowienia" element={<AddOrder1 />}></Route>
           </Routes>
         </Layout>
       </AuthContextProvider>
