@@ -5,10 +5,6 @@ import CardHeader from "react-bootstrap/esm/CardHeader";
 import ListGroup from "react-bootstrap/ListGroup";
 
 const AllProducts = (props) => {
-  // const productId = useRef("");
-  // const price = useRef("");
-  // const productName = useRef("");
-
   const [products, setProducts] = useState([]);
 
   //const {id} = useParams(); -> do useEffect(`URL cały/${id}`)
@@ -16,9 +12,6 @@ const AllProducts = (props) => {
     axios
       .get("https://localhost:7177/api/product/getProducts")
       .then((response) => {
-        // productId.current.value = response.data.productId;
-        // price.current.value = response.data.price;
-        // productName.current.value = response.data.productName;
         setProducts(response.data);
       });
   }, []);
@@ -32,23 +25,6 @@ const AllProducts = (props) => {
       </Card.Body>
     </Card>
   ));
-
-  // <Card style={{ width: "18rem" }}>
-  //   <ListGroup>
-  //     <ListGroup.Item>Cras justo odio</ListGroup.Item>
-  //     <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-  //     <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
-  //     <ListGroup.Item>Cras justo odio</ListGroup.Item>
-  //     <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-  //     <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
-  //     <ListGroup.Item>Cras justo odio</ListGroup.Item>
-  //     <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-  //     <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
-  //     <ListGroup.Item>Cras justo odio</ListGroup.Item>
-  //     <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-  //     <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
-  //   </ListGroup>
-  // </Card>
 };
 
 export default AllProducts;
