@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 using ShopTI.Entities;
-using ShopTI.Enums;
 using ShopTI.IServices;
 using ShopTI.Models;
 
@@ -12,16 +11,10 @@ namespace ShopTI.Services
     public class OrderService : IOrderService
     {
         private readonly ShopDbContext _dbcontext;
-        private readonly IUserContextService _userContextService;
-        private readonly IAuthorizationService _authorizationService;
         public OrderService(
-            ShopDbContext dbcontext,
-            IUserContextService userContextService,
-            IAuthorizationService authorizationService)
+            ShopDbContext dbcontext)
         {
             _dbcontext = dbcontext;
-            _userContextService = userContextService;
-            _authorizationService = authorizationService;
         }
 
         public List<Order> GetOrders()
@@ -34,14 +27,15 @@ namespace ShopTI.Services
             var user = _dbcontext.Users.FirstOrDefault(x => x.Email == request.UserEmail);
 
             if (user == null)
-                throw new Exception("User not found");
-
-
+            {
+                Log.Error("Użytkownik o podanym adresie email nie istnieje;{0}", request.UserEmail);
+                throw new Exception($"Nie istnieje użytkownik o adresie email: {request.UserEmail}");
+            }
+                
             var order = new Order
             {
                 OrderId = request.OrderId,
                 PaymentMethod = request.PaymentMethod,
-                //TotalPrice = request.TotalPrice,
                 User = user,
                 UserId = user.UserId
             };
@@ -62,6 +56,8 @@ namespace ShopTI.Services
             order.TotalPrice = orderDetails.Sum(x => x.Quantity * x.ProductPrice);
 
             _dbcontext.SaveChanges();
+
+            Log.Information("Użytkownik o podanym emailu złożył zamówienie o podanym numerze;{0};{1}", request.UserEmail, order.OrderId);
             return request;
         }
     }

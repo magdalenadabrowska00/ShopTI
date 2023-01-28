@@ -46,7 +46,7 @@ namespace ShopTI.Services
             _dbContext.Users.Add(user);
             _dbContext.SaveChanges();
 
-            Log.Information("Zarejestrowano użytkownika o danych: {0} {1} o adresie email {2}", newUser.FirstName, newUser.LastName, newUser.Email);
+            Log.Information("Zarejestrowano użytkownika o danych;{0};{1};{2}", newUser.Email, newUser.FirstName, newUser.LastName);
         }
 
         public AuthenticatedResponse SignInUser(Login userSignIn)
@@ -55,7 +55,7 @@ namespace ShopTI.Services
 
             if (userFromDb == null)
             {
-                Log.Error("Użytkownik o mailu {0} nie istnieje.", userSignIn.Email);
+                Log.Error("Użytkownik o takim mailu nie istnieje;{0}", userSignIn.Email);
                 throw new Exception("Taki użytkownik nie istnieje.");
             }
 
@@ -63,7 +63,7 @@ namespace ShopTI.Services
 
             if (verifyResult != PasswordVerificationResult.Success)
             {
-                Log.Error("Nie udało się zalogować użytkownikowi o adresie email {0}.", userSignIn.Email);
+                Log.Error("Nie udało się zalogować użytkownikowi o adresie email;{0}", userSignIn.Email);
                 throw new Exception("Niepoprawne hasło");
             }
 
@@ -80,7 +80,7 @@ namespace ShopTI.Services
             userFromDb.RefreshToken = refreshToken;
             _dbContext.SaveChanges();
 
-            Log.Information("Zalogowano użytkownika o adresie email {0}.", userSignIn.Email);
+            Log.Information("Zalogowano użytkownika o danych;{0};{1};{2}", userSignIn.Email, userFromDb.Country, userFromDb.City);
             return new AuthenticatedResponse { Token = accessToken, RefreshToken = refreshToken };
         }
     }

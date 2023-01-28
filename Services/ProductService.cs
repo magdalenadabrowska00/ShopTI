@@ -31,7 +31,7 @@ namespace ShopTI.Services
             var entity = _mapper.Map<Product>(newProduct);
             if (entity == null)
             {
-                Log.Error("Nie udało się utworzyć produktu o nazwie {0} i cenie {1}.", newProduct.ProductName, newProduct.Price);
+                Log.Error("Nie udało się utworzyć produktu o nazwie;{0}", newProduct.ProductName);
                 throw new Exception("Nie udało się utworzyć produktu.");
             }
           
@@ -41,15 +41,15 @@ namespace ShopTI.Services
            
             if (!authorizationResult.Succeeded)
             {
-                Log.Error("Błąd przy autoryzacji użytkownika o id {0}.", _userContextService.GetUserId);
+                Log.Error("Błąd przy autoryzacji użytkownika o id;{0}", _userContextService.GetUserId);
                 throw new Exception("Błąd przy autoryzacji użytkownika.");
             } 
 
             _dbcontext.Products.Add(entity);
             _dbcontext.SaveChanges();
 
-            Log.Information("Utworzono produkt o nazwie {0} i cenie {1} przez użytkownika.", 
-                newProduct.ProductName, newProduct.Price);
+            Log.Information("Utworzono produkt o nazwie;{0}", 
+                newProduct.ProductName);
 
             return entity.ProductId;
         }
