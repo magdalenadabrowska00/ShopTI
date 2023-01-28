@@ -75,7 +75,7 @@ const Layout = ({ children }) => {
             )}
             {user && hideRole && (
               <Nav.Link as={Link} to="/szczegolyZamowienia">
-                Szczegóły zamówienia
+                Order details
               </Nav.Link>
             )}
           </Nav>

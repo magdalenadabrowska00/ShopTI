@@ -8,14 +8,16 @@ import { useRef, useState } from "react";
 const Register = () => {
   const navigate = useNavigate();
 
-  const [checked, setChecked] = useState(true);
+  //const [checked, setChecked] = useState(true);
+  const [role, setRole] = useState();
+  console.log(role);
 
   const firstName = useRef("");
   const lastName = useRef("");
   const email = useRef("");
   const password = useRef("");
   const confirmPassword = useRef("");
-  const role = useRef("");
+  //const role = useRef("");
   const country = useRef("");
   const city = useRef("");
   const street = useRef("");
@@ -28,7 +30,7 @@ const Register = () => {
       email: email.current.value,
       password: password.current.value,
       confirmPassword: confirmPassword.current.value,
-      role: role.current.value,
+      role: role,
       country: country.current.value,
       city: city.current.value,
       street: street.current.value,
@@ -95,8 +97,7 @@ const Register = () => {
                 name="checkbox"
                 type="radio"
                 value="Admin"
-                ref={role}
-                onClick={() => setChecked(checked)}
+                onChange={(e) => setRole(e.target.value)}
               />
 
               <Form.Check
@@ -105,9 +106,7 @@ const Register = () => {
                 name="checkbox"
                 type="radio"
                 value="User"
-                ref={role}
-                defaultChecked={true}
-                onClick={() => setChecked(checked)}
+                onChange={(e) => setRole(e.target.value)}
               />
               <Button variant="primary" type="button" onClick={registerSubmit}>
                 Register
