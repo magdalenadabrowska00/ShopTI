@@ -10,7 +10,5 @@ namespace ShopTI.Entities
         public string PaymentMethod { get; set; }
         public decimal TotalPrice { get; set; }
         public List<OrderDetail> OrderDetails { get; set; }
-        [NotMapped]
-        public string DeletedOrderItemIds { get; set; }
     }
 }
