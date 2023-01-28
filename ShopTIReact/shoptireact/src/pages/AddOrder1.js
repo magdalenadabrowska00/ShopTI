@@ -2,15 +2,16 @@ import { AddOrder } from "./AddOrder";
 import { Container, Row, Col } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import addOrderContext from "../components/AddOrderContext";
 
-export default function AddOrder1(props) {
-  const { ilosc, orderDetails } = props;
-  console.log(JSON.stringify(orderDetails));
-  console.log(JSON.stringify(ilosc));
+export default function AddOrder1({ childer }) {
+  // const { ilosc, orderDetails } = props;
 
+  const { orderDetails } = useContext(addOrderContext);
+  console.log(orderDetails);
   const userEmail = useRef("");
   const paymentMethod = useRef("");
   const navigate = useNavigate();
@@ -19,6 +20,7 @@ export default function AddOrder1(props) {
     let zamowienie = {
       userEmail: userEmail.current.value,
       paymentMethod: paymentMethod.current.value,
+      orderDetails: orderDetails.current.value,
     };
     await order(zamowienie);
   };

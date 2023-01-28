@@ -1,10 +1,11 @@
 import axios from "axios";
 import { Button } from "react-bootstrap";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import Card from "react-bootstrap/Card";
 import CardHeader from "react-bootstrap/esm/CardHeader";
 import ListGroup from "react-bootstrap/ListGroup";
 import Container from "react-bootstrap/Container";
+import AddOrderContext from "../components/AddOrderContext";
 
 // const getFreshModelObject = () => ({
 //   orderDetailId: 0,
@@ -19,11 +20,14 @@ export default function AddOrder() {
   const [products, setProducts] = useState([]);
   const [ilosc, setIlosc] = useState(0);
 
+  const { handleAdd } = useContext(AddOrderContext);
+
   const [orderDetails, setOrderDetails] = useState([]);
-  function handleAdd(item) {
-    const od = orderDetails.concat({ item, ilosc });
-    setOrderDetails(od);
-  }
+  // function handleAdd(item) {
+  //   const od = orderDetails.concat({ item, ilosc });
+  //   setOrderDetails(od);
+  //   ordContect.
+  // }
 
   console.log(JSON.stringify(orderDetails));
 
@@ -85,7 +89,7 @@ export default function AddOrder() {
             //   setProduct((product) => [...product, { item, ilosc }])
             // }
             // onClick={(e) => addProductItem(item)}
-            onClick={(e) => handleAdd({ item })}
+            onClick={(e) => handleAdd(item, ilosc)}
           >
             Dodaj
           </Button>

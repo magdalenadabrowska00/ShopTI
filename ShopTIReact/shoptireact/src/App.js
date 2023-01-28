@@ -10,6 +10,7 @@ import AllProducts from "./pages/AllProducts";
 import AddOrder from "./pages/AddOrder";
 import AddOrder1 from "./pages/AddOrder1";
 import { AuthContextProvider } from "./components/shared/AuthContext";
+import { AdOrderContextProvider } from "./components/AddOrderContext";
 
 function App() {
   return (
@@ -21,18 +22,30 @@ function App() {
     // </BrowserRouter>
     <>
       <AuthContextProvider>
-        <Layout>
-          <Routes>
-            <Route path="/" element={<Home />}></Route>
-            <Route path="/login" element={<Login />}></Route>
-            <Route path="/registration" element={<Register />}></Route>
-            <Route path="/addNewProduct" element={<AddProduct />}></Route>
-            <Route path="/getProducts" element={<AllProducts />}></Route>
-            <Route path="/addOrder" element={<AddOrder />}></Route>
-            <Route path="/szczegolyZamowienia" element={<AddOrder1 />}></Route>
-          </Routes>
-        </Layout>
+        <AdOrderContextProvider>
+          <Layout>
+            <Routes>
+              <Route path="/" element={<Home />}></Route>
+              <Route path="/login" element={<Login />}></Route>
+              <Route path="/registration" element={<Register />}></Route>
+              <Route path="/addNewProduct" element={<AddProduct />}></Route>
+              <Route path="/getProducts" element={<AllProducts />}></Route>
+
+              <Route path="/addOrder" element={<AddOrder />}></Route>
+              <Route
+                path="/szczegolyZamowienia"
+                element={<AddOrder1 />}
+              ></Route>
+            </Routes>
+          </Layout>
+        </AdOrderContextProvider>
       </AuthContextProvider>
+      {/* <AdOrderContextProvider>
+        <Routes>
+          <Route path="/addOrder" element={<AddOrder />}></Route>
+          <Route path="/szczegolyZamowienia" element={<AddOrder1 />}></Route>
+        </Routes>
+      </AdOrderContextProvider> */}
     </>
   );
 }
