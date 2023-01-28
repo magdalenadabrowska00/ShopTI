@@ -18,7 +18,7 @@ namespace ShopTI.Controllers
             _jsonFileService = jsonFileService;
         }
 
-        [HttpPost("register")]
+        [HttpPost]
         public ActionResult SaveOrdersToJson()
         {
             _jsonFileService.SerializeObject();

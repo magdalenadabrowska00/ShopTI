@@ -9,6 +9,7 @@ import AddProduct from "./pages/AddProduct";
 import AllProducts from "./pages/AllProducts";
 import AddOrder from "./pages/AddOrder";
 import AddOrder1 from "./pages/AddOrder1";
+import JsonPrintout from "./pages/JsonPrintout";
 import { AuthContextProvider } from "./components/shared/AuthContext";
 import { AdOrderContextProvider } from "./components/AddOrderContext";
 
@@ -29,6 +30,7 @@ function App() {
                 path="/szczegolyZamowienia"
                 element={<AddOrder1 />}
               ></Route>
+              <Route path="/jsonPrintout" element={<JsonPrintout />}></Route>
             </Routes>
           </Layout>
         </AdOrderContextProvider>

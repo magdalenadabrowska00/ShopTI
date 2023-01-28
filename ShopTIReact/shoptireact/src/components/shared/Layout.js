@@ -63,6 +63,11 @@ const Layout = ({ children }) => {
                 Products
               </Nav.Link>
             )}
+            {user && !hideRole && (
+              <Nav.Link as={Link} to="/jsonPrintout">
+                Print orders
+              </Nav.Link>
+            )}
             {user && hideRole && (
               <Nav.Link as={Link} to="/addOrder">
                 New order
