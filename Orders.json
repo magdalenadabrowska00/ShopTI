@@ -1,0 +1,362 @@
+{
+  "OrderId": 1,
+  "UserId": 2,
+  "User": {
+    "UserId": 2,
+    "FirstName": "NataliaAdmin",
+    "LastName": "Nowak",
+    "Email": "natalia.Admin.nowak@email.com",
+    "PasswordHash": "AQAAAAEAACcQAAAAEJLZkhSytbY2ML2N2LMWGERqnSBZb9vEV0rf6PAZiXu2\u002BKKwrQi7u0o8b38ac/C7DQ==",
+    "Role": "Admin",
+    "Country": "Polska",
+    "City": "Chorz\u00F3w",
+    "Street": "Katowicka 45",
+    "PostalCode": "44-666",
+    "RefreshToken": "mI68RZ9j\u002B\u002BComzXrWNV9EfZiksOITvZ\u002BHp42pRdPc9E="
+  },
+  "PaymentMethod": "Card",
+  "TotalPrice": 0.00,
+  "OrderDetails": [
+    {
+      "OrderDetailId": 1,
+      "ProductId": 4,
+      "Product": null,
+      "OrderId": 1,
+      "ProductPrice": 33.00,
+      "Quantity": 4
+    }
+  ]
+},
+{
+  "OrderId": 2,
+  "UserId": 2,
+  "User": {
+    "UserId": 2,
+    "FirstName": "NataliaAdmin",
+    "LastName": "Nowak",
+    "Email": "natalia.Admin.nowak@email.com",
+    "PasswordHash": "AQAAAAEAACcQAAAAEJLZkhSytbY2ML2N2LMWGERqnSBZb9vEV0rf6PAZiXu2\u002BKKwrQi7u0o8b38ac/C7DQ==",
+    "Role": "Admin",
+    "Country": "Polska",
+    "City": "Chorz\u00F3w",
+    "Street": "Katowicka 45",
+    "PostalCode": "44-666",
+    "RefreshToken": "mI68RZ9j\u002B\u002BComzXrWNV9EfZiksOITvZ\u002BHp42pRdPc9E="
+  },
+  "PaymentMethod": "Card",
+  "TotalPrice": 264.00,
+  "OrderDetails": [
+    {
+      "OrderDetailId": 2,
+      "ProductId": 3,
+      "Product": null,
+      "OrderId": 2,
+      "ProductPrice": 33.00,
+      "Quantity": 8
+    }
+  ]
+},
+{
+  "OrderId": 3,
+  "UserId": 1,
+  "User": {
+    "UserId": 1,
+    "FirstName": "Natalia",
+    "LastName": "Nowak",
+    "Email": "natalia.nowak@email.com",
+    "PasswordHash": "AQAAAAEAACcQAAAAENDnGFRVtH4I/aH\u002B\u002Bvp8TFkr23I6IlUSb1VNoNMbzhoN2doej5DrOovTcyBDvHmq8g==",
+    "Role": "User",
+    "Country": "Polska",
+    "City": "Chorz\u00F3w",
+    "Street": "Katowicka 45",
+    "PostalCode": "44-666",
+    "RefreshToken": null
+  },
+  "PaymentMethod": "card",
+  "TotalPrice": 66.00,
+  "OrderDetails": [
+    {
+      "OrderDetailId": 3,
+      "ProductId": 1,
+      "Product": null,
+      "OrderId": 3,
+      "ProductPrice": 22.00,
+      "Quantity": 3
+    }
+  ]
+},
+{
+  "OrderId": 4,
+  "UserId": 1,
+  "User": {
+    "UserId": 1,
+    "FirstName": "Natalia",
+    "LastName": "Nowak",
+    "Email": "natalia.nowak@email.com",
+    "PasswordHash": "AQAAAAEAACcQAAAAENDnGFRVtH4I/aH\u002B\u002Bvp8TFkr23I6IlUSb1VNoNMbzhoN2doej5DrOovTcyBDvHmq8g==",
+    "Role": "User",
+    "Country": "Polska",
+    "City": "Chorz\u00F3w",
+    "Street": "Katowicka 45",
+    "PostalCode": "44-666",
+    "RefreshToken": null
+  },
+  "PaymentMethod": "cash",
+  "TotalPrice": 0.00,
+  "OrderDetails": [
+    {
+      "OrderDetailId": 4,
+      "ProductId": 1,
+      "Product": null,
+      "OrderId": 4,
+      "ProductPrice": 0.00,
+      "Quantity": 6
+    },
+    {
+      "OrderDetailId": 5,
+      "ProductId": 3,
+      "Product": null,
+      "OrderId": 4,
+      "ProductPrice": 0.00,
+      "Quantity": 2
+    },
+    {
+      "OrderDetailId": 6,
+      "ProductId": 2,
+      "Product": null,
+      "OrderId": 4,
+      "ProductPrice": 0.00,
+      "Quantity": 3
+    }
+  ]
+},
+{
+  "OrderId": 5,
+  "UserId": 1,
+  "User": {
+    "UserId": 1,
+    "FirstName": "Natalia",
+    "LastName": "Nowak",
+    "Email": "natalia.nowak@email.com",
+    "PasswordHash": "AQAAAAEAACcQAAAAENDnGFRVtH4I/aH\u002B\u002Bvp8TFkr23I6IlUSb1VNoNMbzhoN2doej5DrOovTcyBDvHmq8g==",
+    "Role": "User",
+    "Country": "Polska",
+    "City": "Chorz\u00F3w",
+    "Street": "Katowicka 45",
+    "PostalCode": "44-666",
+    "RefreshToken": null
+  },
+  "PaymentMethod": "cash",
+  "TotalPrice": 221.94,
+  "OrderDetails": [
+    {
+      "OrderDetailId": 7,
+      "ProductId": 1,
+      "Product": null,
+      "OrderId": 5,
+      "ProductPrice": 10.99,
+      "Quantity": 6
+    },
+    {
+      "OrderDetailId": 8,
+      "ProductId": 3,
+      "Product": null,
+      "OrderId": 5,
+      "ProductPrice": 33.00,
+      "Quantity": 2
+    },
+    {
+      "OrderDetailId": 9,
+      "ProductId": 2,
+      "Product": null,
+      "OrderId": 5,
+      "ProductPrice": 30.00,
+      "Quantity": 3
+    }
+  ]
+},
+{
+  "OrderId": 6,
+  "UserId": 1,
+  "User": {
+    "UserId": 1,
+    "FirstName": "Natalia",
+    "LastName": "Nowak",
+    "Email": "natalia.nowak@email.com",
+    "PasswordHash": "AQAAAAEAACcQAAAAENDnGFRVtH4I/aH\u002B\u002Bvp8TFkr23I6IlUSb1VNoNMbzhoN2doej5DrOovTcyBDvHmq8g==",
+    "Role": "User",
+    "Country": "Polska",
+    "City": "Chorz\u00F3w",
+    "Street": "Katowicka 45",
+    "PostalCode": "44-666",
+    "RefreshToken": null
+  },
+  "PaymentMethod": "cash",
+  "TotalPrice": 221.94,
+  "OrderDetails": [
+    {
+      "OrderDetailId": 10,
+      "ProductId": 1,
+      "Product": null,
+      "OrderId": 6,
+      "ProductPrice": 10.99,
+      "Quantity": 6
+    },
+    {
+      "OrderDetailId": 11,
+      "ProductId": 3,
+      "Product": null,
+      "OrderId": 6,
+      "ProductPrice": 33.00,
+      "Quantity": 2
+    },
+    {
+      "OrderDetailId": 12,
+      "ProductId": 2,
+      "Product": null,
+      "OrderId": 6,
+      "ProductPrice": 30.00,
+      "Quantity": 3
+    }
+  ]
+},
+{
+  "OrderId": 1002,
+  "UserId": 13,
+  "User": {
+    "UserId": 13,
+    "FirstName": "Karol",
+    "LastName": "Nowak",
+    "Email": "karol@gmail.com",
+    "PasswordHash": "AQAAAAEAACcQAAAAEPSm9NWAhYonChFU7n/EChZxF46wfb3skzB7fUQxiMElTwskDJa9bAScCzEriXVT7g==",
+    "Role": "User",
+    "Country": "Polska",
+    "City": "Opole",
+    "Street": "Katowicka 55",
+    "PostalCode": "44-444",
+    "RefreshToken": "eaRTFB8G3Y23mgfyA6Fl3xr3B3sNiLvifXYxR5SLgnI="
+  },
+  "PaymentMethod": "card",
+  "TotalPrice": 8.00,
+  "OrderDetails": [
+    {
+      "OrderDetailId": 1002,
+      "ProductId": 7,
+      "Product": null,
+      "OrderId": 1002,
+      "ProductPrice": 8.00,
+      "Quantity": 1
+    }
+  ]
+},
+{
+  "OrderId": 1003,
+  "UserId": 13,
+  "User": {
+    "UserId": 13,
+    "FirstName": "Karol",
+    "LastName": "Nowak",
+    "Email": "karol@gmail.com",
+    "PasswordHash": "AQAAAAEAACcQAAAAEPSm9NWAhYonChFU7n/EChZxF46wfb3skzB7fUQxiMElTwskDJa9bAScCzEriXVT7g==",
+    "Role": "User",
+    "Country": "Polska",
+    "City": "Opole",
+    "Street": "Katowicka 55",
+    "PostalCode": "44-444",
+    "RefreshToken": "eaRTFB8G3Y23mgfyA6Fl3xr3B3sNiLvifXYxR5SLgnI="
+  },
+  "PaymentMethod": "card",
+  "TotalPrice": 32.97,
+  "OrderDetails": [
+    {
+      "OrderDetailId": 1003,
+      "ProductId": 1,
+      "Product": null,
+      "OrderId": 1003,
+      "ProductPrice": 10.99,
+      "Quantity": 3
+    }
+  ]
+},
+{
+  "OrderId": 1004,
+  "UserId": 13,
+  "User": {
+    "UserId": 13,
+    "FirstName": "Karol",
+    "LastName": "Nowak",
+    "Email": "karol@gmail.com",
+    "PasswordHash": "AQAAAAEAACcQAAAAEPSm9NWAhYonChFU7n/EChZxF46wfb3skzB7fUQxiMElTwskDJa9bAScCzEriXVT7g==",
+    "Role": "User",
+    "Country": "Polska",
+    "City": "Opole",
+    "Street": "Katowicka 55",
+    "PostalCode": "44-444",
+    "RefreshToken": "eaRTFB8G3Y23mgfyA6Fl3xr3B3sNiLvifXYxR5SLgnI="
+  },
+  "PaymentMethod": "card",
+  "TotalPrice": 155.94,
+  "OrderDetails": [
+    {
+      "OrderDetailId": 1004,
+      "ProductId": 1,
+      "Product": null,
+      "OrderId": 1004,
+      "ProductPrice": 10.99,
+      "Quantity": 3
+    },
+    {
+      "OrderDetailId": 1005,
+      "ProductId": 1,
+      "Product": null,
+      "OrderId": 1004,
+      "ProductPrice": 10.99,
+      "Quantity": 3
+    },
+    {
+      "OrderDetailId": 1006,
+      "ProductId": 2,
+      "Product": null,
+      "OrderId": 1004,
+      "ProductPrice": 30.00,
+      "Quantity": 3
+    }
+  ]
+},
+{
+  "OrderId": 1005,
+  "UserId": 13,
+  "User": {
+    "UserId": 13,
+    "FirstName": "Karol",
+    "LastName": "Nowak",
+    "Email": "karol@gmail.com",
+    "PasswordHash": "AQAAAAEAACcQAAAAEPSm9NWAhYonChFU7n/EChZxF46wfb3skzB7fUQxiMElTwskDJa9bAScCzEriXVT7g==",
+    "Role": "User",
+    "Country": "Polska",
+    "City": "Opole",
+    "Street": "Katowicka 55",
+    "PostalCode": "44-444",
+    "RefreshToken": "eaRTFB8G3Y23mgfyA6Fl3xr3B3sNiLvifXYxR5SLgnI="
+  },
+  "PaymentMethod": "card",
+  "TotalPrice": 111.98,
+  "OrderDetails": [
+    {
+      "OrderDetailId": 1007,
+      "ProductId": 1,
+      "Product": null,
+      "OrderId": 1005,
+      "ProductPrice": 10.99,
+      "Quantity": 2
+    },
+    {
+      "OrderDetailId": 1008,
+      "ProductId": 2,
+      "Product": null,
+      "OrderId": 1005,
+      "ProductPrice": 30.00,
+      "Quantity": 3
+    }
+  ]
+},

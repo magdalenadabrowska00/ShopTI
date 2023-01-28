@@ -53,6 +53,7 @@ builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
 builder.Services.AddScoped<IValidator<RegisterUser>, RegisterUserValidator>();
+builder.Services.AddScoped<IJsonFilesService, JsonFilesService>();
 builder.Services.AddSingleton<IUserContextService, UserContextService>();
 builder.Services.AddScoped<IAuthorizationHandler, UserAuthorizationHandler>();
 builder.Services.AddHttpContextAccessor();
