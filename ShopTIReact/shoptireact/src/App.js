@@ -14,12 +14,6 @@ import { AdOrderContextProvider } from "./components/AddOrderContext";
 
 function App() {
   return (
-    // <BrowserRouter>
-    //   <Routes>
-    //     {/* <Route path="/" element={<Home />} />
-    //     <Route path="login" element={<Login />} /> */}
-    //   </Routes>
-    // </BrowserRouter>
     <>
       <AuthContextProvider>
         <AdOrderContextProvider>
@@ -30,7 +24,6 @@ function App() {
               <Route path="/registration" element={<Register />}></Route>
               <Route path="/addNewProduct" element={<AddProduct />}></Route>
               <Route path="/getProducts" element={<AllProducts />}></Route>
-
               <Route path="/addOrder" element={<AddOrder />}></Route>
               <Route
                 path="/szczegolyZamowienia"
@@ -40,12 +33,6 @@ function App() {
           </Layout>
         </AdOrderContextProvider>
       </AuthContextProvider>
-      {/* <AdOrderContextProvider>
-        <Routes>
-          <Route path="/addOrder" element={<AddOrder />}></Route>
-          <Route path="/szczegolyZamowienia" element={<AddOrder1 />}></Route>
-        </Routes>
-      </AdOrderContextProvider> */}
     </>
   );
 }

@@ -54,7 +54,7 @@ namespace ShopTI.Services
                 OrderId = order.OrderId,
                 Product = _dbcontext.Products.FirstOrDefault(x => x.ProductId == y.ProductId),
                 ProductId = y.ProductId,
-                ProductPrice = _dbcontext.Products.Where(x => x.ProductId == y.ProductId).Select(x => x.Price).FirstOrDefault(),
+                ProductPrice = y.ProductPrice,
                 Quantity = y.Quantity
             });
             

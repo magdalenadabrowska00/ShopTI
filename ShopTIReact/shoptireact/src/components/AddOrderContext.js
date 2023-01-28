@@ -1,14 +1,20 @@
 import { createContext, useState } from "react";
-import axios from "axios";
-import jwt_decode from "jwt-decode";
-import { useNavigate } from "react-router-dom";
 
 const AdOrderContext = createContext();
 
 export const AdOrderContextProvider = ({ children }) => {
   const [orderDetails, setOrderDetails] = useState([]);
   function handleAdd(item, ilosc) {
-    const od = orderDetails.concat({ item, ilosc });
+    var newItem = [
+      {
+        orderDetailId: 0,
+        orderId: 0,
+        productId: item.productId,
+        productPrice: item.price,
+        quantity: ilosc,
+      },
+    ];
+    const od = orderDetails.concat(newItem);
     setOrderDetails(od);
   }
 

@@ -2,26 +2,33 @@ import { AddOrder } from "./AddOrder";
 import { Container, Row, Col } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { useContext, useRef } from "react";
+import { useContext, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import addOrderContext from "../components/AddOrderContext";
 
 export default function AddOrder1({ childer }) {
-  // const { ilosc, orderDetails } = props;
-
   const { orderDetails } = useContext(addOrderContext);
   console.log(orderDetails);
-  const userEmail = useRef("");
-  const paymentMethod = useRef("");
+  console.log(JSON.stringify(orderDetails));
+
+  const [userEmail, setUserEmail] = useState();
+  const [paymentMethod, setPaymentMethod] = useState();
+
+  console.log(JSON.stringify(userEmail));
+  console.log(JSON.stringify(paymentMethod));
+
   const navigate = useNavigate();
 
   const zamowienieSubmit = async () => {
     let zamowienie = {
-      userEmail: userEmail.current.value,
-      paymentMethod: paymentMethod.current.value,
-      orderDetails: orderDetails.current.value,
+      orderId: 0,
+      userEmail: userEmail,
+      paymentMethod: paymentMethod,
+      totalPrice: 0,
+      orderDetails: orderDetails,
     };
+    console.log(JSON.stringify(zamowienie));
     await order(zamowienie);
   };
 
@@ -43,11 +50,19 @@ export default function AddOrder1({ childer }) {
             <form>
               <Form.Group className="mb-3" controlId="formUserName">
                 <Form.Label>Email address</Form.Label>
-                <Form.Control type="text" ref={userEmail} />
+                <Form.Control
+                  type="text"
+                  value={userEmail}
+                  onChange={(e) => setUserEmail(e.target.value)}
+                />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formPassword">
                 <Form.Label>Payment method</Form.Label>
-                <Form.Control type="text" ref={paymentMethod} />
+                <Form.Control
+                  type="text"
+                  value={paymentMethod}
+                  onChange={(e) => setPaymentMethod(e.target.value)}
+                />
               </Form.Group>
               <Button
                 variant="primary"

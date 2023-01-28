@@ -96,7 +96,7 @@ const Register = () => {
                 type="radio"
                 value="Admin"
                 ref={role}
-                onClick={() => setChecked(checked)} //nie działa zaznaczenie admina
+                onClick={() => setChecked(checked)}
               />
 
               <Form.Check
